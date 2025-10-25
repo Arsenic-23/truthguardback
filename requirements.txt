@@ -4,3 +4,4 @@ python-dotenv
 httpx
 PyPDF2
 openai
+python-multipart
