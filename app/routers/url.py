@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from app.services.extractor import extract_from_url
-from app.services.nlp import preprocess
-from app.services.checker import evaluate
-from app.services.scoring import score_result
+from services.extractor import extract_from_url
+from services.nlp import preprocess
+from services.checker import evaluate
+from services.scoring import score_result
 import time
 
 router = APIRouter(prefix="/check-url", tags=["url"])
@@ -16,4 +16,4 @@ async def check_url(payload: dict):
     result = await evaluate(processed)
     score = score_result(result)
     duration = (time.time() - start) * 1000
-    return {"score": score, "sources": result["sources"], "duration_ms": duration}
+    return {"score": score, "sources": result["sources"], "duration_ms": duration, "details": result["details"]}
