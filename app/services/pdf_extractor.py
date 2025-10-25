@@ -2,27 +2,27 @@
 PDF Extractor Service
 --------------------
 Extracts text from uploaded PDF files for verification.
-Uses pdfplumber for stable, dependency-light extraction.
+Uses PyPDF2 for smooth deployment on any environment (no Rust/C dependencies).
 """
 
 from typing import Optional
 from io import BytesIO
-import pdfplumber
+from PyPDF2 import PdfReader
 from fastapi import HTTPException
 
 
 def extract_text_from_pdf(file_bytes: bytes, max_chars: Optional[int] = 5000) -> str:
     """
-    Extracts text from PDF bytes using pdfplumber.
+    Extracts text from PDF bytes using PyPDF2.
     Limits to `max_chars` characters for performance.
     Raises HTTPException if extraction fails.
     """
     try:
+        reader = PdfReader(BytesIO(file_bytes))
         text = ""
-        with pdfplumber.open(BytesIO(file_bytes)) as pdf:
-            for page in pdf.pages:
-                page_text = page.extract_text() or ""
-                text += page_text + " "
+
+        for page in reader.pages:
+            text += page.extract_text() or ""
 
         cleaned_text = " ".join(text.split())
         if max_chars:
