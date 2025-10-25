@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from app.routers import text, url, pdf
+from routers import text, url, pdf
 
-app = FastAPI()
+app = FastAPI(title="Authenticity Checker")
 
 app.include_router(text.router)
 app.include_router(url.router)
