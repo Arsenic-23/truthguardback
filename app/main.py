@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import text, url, pdf
+from app.routers import text, url, pdf
 
 app = FastAPI(title="Authenticity Checker")
 
