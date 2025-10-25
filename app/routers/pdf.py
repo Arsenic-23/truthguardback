@@ -1,8 +1,8 @@
 from fastapi import APIRouter, UploadFile, File
-from services.extractor import extract_from_pdf
-from services.nlp import preprocess
-from services.checker import evaluate
-from services.scoring import score_result
+from app.services.extractor import extract_from_pdf
+from app.services.nlp import preprocess
+from app.services.checker import evaluate
+from app.services.scoring import score_result
 import time
 
 router = APIRouter(prefix="/check-pdf", tags=["pdf"])
