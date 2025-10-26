@@ -8,6 +8,9 @@ import time
 
 router = APIRouter(prefix="/check-text", tags=["text"])
 
+@router.options("/")
+async def options():
+    return {}
 @router.post("/")
 async def check_text(payload: TextPayload):
     start = time.time()
