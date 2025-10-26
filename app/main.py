@@ -6,7 +6,7 @@ from app.routers import text, url, pdf
 
 load_dotenv()
 
-app = FastAPI(title="Authenticity Checker")
+app = FastAPI(title="truth guard")
 
 
 app.add_middleware(
