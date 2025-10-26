@@ -27,4 +27,4 @@ app.include_router(pdf.router)
 
 @app.get("/")
 def root():
-    return {"status": "chal raha hai yoo^^"}
+    return {"status": "ping pong"}
