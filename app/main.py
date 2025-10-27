@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import text, url, pdf
 
-app = FastAPI(title="Authenticity Checker")
+app = FastAPI(title="Truth guard")
 
 
 origins = [
